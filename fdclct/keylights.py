@@ -1,3 +1,4 @@
+""" Class to control the lights """
 import usb.core
 import usb.util
 
