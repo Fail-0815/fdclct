@@ -9,6 +9,7 @@ This tool is to set the color of the RGB LEDs in the Drevo Calibur keyboard. By 
 ## Requirements
 ### Software 
 This package is written for Python 3.
+
 Packages:
 * [PyUSB 1.0+](https://github.com/pyusb/pyusb) (under Ubuntu also available via ```sudo apt install python3-usb```)
 * [colour 0.1.5](https://github.com/vaab/colour)
