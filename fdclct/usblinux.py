@@ -32,36 +32,6 @@ class Usblinux(usbadapter.Usbadapter):
         self.write = writergbendpoint.write
         self.dev = dev
 
-    def sendhex(self, hexstr):
-        """
-        Send a Message with exactly 216 bytes as color message 
-
-        Keyword arguments:
-        hexstr -- Message in a string in it's hexadecimal representation
-        """
-        error = ValueError(
-            "Valid hexstring with excatly 432 characters needed")
-        if len(hexstr) != 432:
-            raise error
-        try:
-            bytearray.fromhex(hexstr)
-        except ValueError:
-            raise error
-        header = '00e0'
-        msglen = '3d'
-        msglenlast = '21'
-
-        self.write(self.initRGBmsg)
-        for i in range(0, 3):
-            self.write(
-                bytearray.fromhex(header + msglen + hexstr[i*122:(i+1)*122])
-            )
-        self.write(
-            bytearray.fromhex(header + msglenlast +
-                              hexstr[366:432] + '00' * 28)
-        )
-        self.write(self.endRGBmsg)
-
     def __del__(self):
         # This is needed to release interface, otherwise attach_kernel_driver fails
         # due to "Resource busy"
