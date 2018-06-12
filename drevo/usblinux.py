@@ -1,7 +1,7 @@
 """ Linux related implementation of USB code """
 import usb.core
 import usb.util
-import usbadapter
+import drevo.usbadapter as usbadapter
 
 class Usblinux(usbadapter.Usbadapter):
     """ Class that implements Linux specific USB handling """

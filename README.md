@@ -1,11 +1,31 @@
-sudo python3 drevo
 
 # fdclct
 
 Free Drevo Calibur Lighting Control Tool
 *Warning: at the moment just very little actually works*
 
-## What this will become
+## Usage
+
+### Linux (possibly also unixes)
+
+The simple way:
+
+```bash
+sudo python3 drevo --help
+```
+
+The better way:
+
+Write yourself some udev rules so you may access the USB device with your user privileges and drop the sudo.
+I highly discourage you to run someones (or my) shitty python code with root privileges.
+
+### Windows
+
+```cmd
+python3 drevo --help
+```
+
+## What this should one day become
 
 This tool is to set the color of the RGB LEDs in the Drevo Calibur keyboard. By default this keyboard can be set to 8 different colors per key, but the Windows software by Drevo ([you can get from here](drevo.net/product/keyboard/calibur)) supports color selection per key with 24 bit color. Sadly it is closed source and Windows exclusive. So this project aims to reverse engineer the USB communication and implement a free version of the same tool to enable platform independent keyboard RGB glory.
 

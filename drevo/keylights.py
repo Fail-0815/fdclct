@@ -1,12 +1,12 @@
 """ Class to control the lights """
 from platform import system
 from colour import Color
-import usbadapter
+import drevo.usbadapter as usbadapter
 import random
 if system() == 'Windows':
-    import usbwindows
+    import drevo.usbwindows as usbwindows
 else:
-    import usblinux
+    import drevo.usblinux as usblinux
 
 class Keylights:
     """
@@ -43,10 +43,10 @@ class Keylights:
 
     def setrandom(self):
         """
-        Sets the color of a single key. Massive TODO.
+        Sets random colors for each key.
         """
         fullcolorstr = ''
-        for i in range(0,72):
+        for _ in range(0,72):
             color = Color(rgb=(random.uniform(0.0, 1.0), random.uniform(0.0, 1.0), random.uniform(0.0, 1.0)))
             fullcolorstr += color.hex_l[1:]
         self.adapter.sendhex(fullcolorstr)
@@ -54,7 +54,7 @@ class Keylights:
 
     def setkey(self, keycode, _color):
         """
-        Sets the color of a single key. Massive TODO.
+        Sets the color of a single key.
         """
 
         fullcolorstr = ''
