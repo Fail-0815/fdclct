@@ -27,7 +27,7 @@ python3 drevo --help
 
 ## What this should one day become
 
-This tool is to set the color of the RGB LEDs in the Drevo Calibur keyboard. By default this keyboard can be set to 8 different colors per key, but the Windows software by Drevo ([you can get from here](drevo.net/product/keyboard/calibur)) supports color selection per key with 24 bit color. Sadly it is closed source and Windows exclusive. So this project aims to reverse engineer the USB communication and implement a free version of the same tool to enable platform independent keyboard RGB glory.
+This tool is to set the color of the RGB LEDs in the Drevo Calibur keyboard. By default this keyboard can be set to 8 different colors per key, but the Windows software by Drevo ([you can get from here](https://drevo.net/product/keyboard/calibur)) supports color selection per key with 24 bit color. Sadly it is closed source and Windows exclusive. So this project aims to reverse engineer the USB communication and implement a free version of the same tool to enable platform independent keyboard RGB glory.
 
 ## Requirements
 
