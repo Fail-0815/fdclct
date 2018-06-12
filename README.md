@@ -1,3 +1,5 @@
+sudo python3 drevo
+
 # fdclct
 
 Free Drevo Calibur Lighting Control Tool

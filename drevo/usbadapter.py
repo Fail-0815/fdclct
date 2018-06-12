@@ -24,6 +24,7 @@ class Usbadapter(ABC):
         Keyword arguments:
         hexstr -- Message in a string in it's hexadecimal representation
         """
+
         error = ValueError(
             "Valid hexstring with excatly 432 characters needed")
         if len(hexstr) != 432:
