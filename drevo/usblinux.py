@@ -22,15 +22,26 @@ class Usblinux(usbadapter.Usbadapter):
             dev.detach_kernel_driver(self.rgbinterface)
         conf = dev.get_active_configuration()
         interface = conf[(self.rgbinterface, 0)]
+        self.dev = dev
+
         writergbendpoint = usb.util.find_descriptor(
             interface,
             bEndpointAddress=0x1
         )
         if writergbendpoint is None:
-            raise ValueError("Endpoint not found")
+            raise ValueError("Endpoint for writing not found")
         self.writergbendpoint = writergbendpoint
         self.write = writergbendpoint.write
-        self.dev = dev
+        
+        readrgbendpoint = usb.util.find_descriptor(
+            interface,
+            bEndpointAddress=0x84
+        )
+        if readrgbendpoint is None:
+            raise ValueError("Endpoint for reading not found")
+        self.readrgbendpoint = readrgbendpoint
+        self.read = readrgbendpoint.read
+        
 
     def __del__(self):
         # This is needed to release interface, otherwise attach_kernel_driver fails

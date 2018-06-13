@@ -8,22 +8,36 @@ Free Drevo Calibur Lighting Control Tool
 
 ### Linux (possibly also unixes)
 
-The simple way:
+**The simple way:**
+
+In the folder containing the drevo folder, use the shell to light the C key in red:
 
 ```bash
-sudo python3 drevo --help
+sudo python3 -m drevo -c red -k C
 ```
 
-The better way:
+**The better way:**
 
 Write yourself some udev rules so you may access the USB device with your user privileges and drop the sudo.
-I highly discourage you to run someones (or my) shitty python code with root privileges.
+I highly discourage you from running anybody's shitty python code with root privileges.
 
 ### Windows
 
 ```cmd
-python3 drevo --help
+python3 -m drevo --help
 ```
+
+### To use it as python module
+
+Include the drevo folder in your module path and simply import it in your python file.
+
+```python
+import drevo
+```
+
+### General
+
+If you want to input colors as hexadecimal values input it like this: ```-c #deadbe```, otherwise many color names are accepted.
 
 ## What this should one day become
 

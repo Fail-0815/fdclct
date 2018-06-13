@@ -10,16 +10,22 @@ class Usbadapter(ABC):
     # I suspect the latter
 
     # Device Specific USB message header
-    initRGBmsg = bytearray.fromhex('00e1'+'00'*62)
-    endRGBmsg = bytearray.fromhex('e6'*64)
+    initwritemsg = bytearray.fromhex('00e1'+'00'*62)
+    initreadmsg = bytearray.fromhex('00e2'+'00'*62)
+    endmsg = bytearray.fromhex('e6'*64)
 
+    
     def write(self, string):
         """ Write is implemented platform specific """
         pass
 
+    def read(self, size):
+        """ Read is implemented platform specific """
+        pass
+
     def sendhex(self, hexstr):
         """
-        Send a Message with exactly 216 bytes as color message
+        Send a message with exactly 216 bytes as color message
 
         Keyword arguments:
         hexstr -- Message in a string in it's hexadecimal representation
@@ -37,7 +43,7 @@ class Usbadapter(ABC):
         msglen = '3d'
         msglenlast = '21'
 
-        self.write(self.initRGBmsg)
+        self.write(self.initwritemsg)
         for i in range(0, 3):
             self.write(
                 bytearray.fromhex(header + msglen + hexstr[i*122:(i+1)*122])
@@ -46,4 +52,19 @@ class Usbadapter(ABC):
             bytearray.fromhex(header + msglenlast +
                               hexstr[366:432] + '00' * 28)
         )
-        self.write(self.endRGBmsg)
+        self.write(self.endmsg)
+
+    def gethex(self):
+        """
+        Recieve a message representing the current color values of the keyboard
+        """
+        self.write(self.initreadmsg)
+        responses = bytearray()
+        for _ in range(4):
+            response = self.read(64)
+            length = response[2]
+            message = response[3:length+3]
+            responses = responses + message
+        _ = self.read(64) # Here comes the end message. should be self.endmsg
+        return responses.hex()
+        
