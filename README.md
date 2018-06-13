@@ -2,7 +2,6 @@
 # fdclct
 
 Free Drevo Calibur Lighting Control Tool
-*Warning: at the moment just very little actually works*
 
 ## Usage
 
