@@ -17,7 +17,7 @@ sudo python3 -m drevo -c red -k C
 
 **The better way:**
 
-Write yourself some udev rules so you may access the USB device with your user privileges and drop the sudo.
+Use a udev rule so you may access the USB device with your user privileges and drop the sudo. An example can be found [here](utils/).
 I highly discourage you from running anybody's shitty python code with root privileges.
 
 ### Windows
