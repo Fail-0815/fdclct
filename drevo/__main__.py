@@ -17,11 +17,18 @@ def main():
     # TODO: Add parameter for a json object mapping key -> color
     parse = argparse.ArgumentParser(
         description='Change light color for switches of the Drevo Calibur keyboard')
-    parse.add_argument("-c", "--color", nargs='?')
-    parse.add_argument("-k", "--key", nargs='?')
-    parse.add_argument("-r", "--random", action="store_true")
-    parse.add_argument("-R", "--allrandom", action="store_true")
-    parse.add_argument("-v", "--verbose", action="store_true")
+    parse.add_argument("-c", "--color", nargs='?', help=
+        "Color to set on LEDs. Can be input as #rrggbb in hexadecimal or as name.")
+    parse.add_argument("-k", "--key", nargs='?', help=
+        "Keyname of the Key to be set. " +
+        "Options can be seen in output of -v. " +
+        "If not given whole keyboard is set to given color.")
+    parse.add_argument("-r", "--random", action="store_true", help=
+        "Set random color for given key or full keyboard")
+    parse.add_argument("-R", "--allrandom", action="store_true", help=
+        "Set each key to a random color. This overwrites all other options.")
+    parse.add_argument("-v", "--verbose", action="store_true", help=
+        "Return list of current keys and their colors at the end of execution.")
     args = parse.parse_args()
 
     lightctl = keylights.Keylights()
