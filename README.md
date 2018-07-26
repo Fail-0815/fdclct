@@ -53,7 +53,7 @@ Packages:
 * [PyUSB 1.0+](https://github.com/pyusb/pyusb) (under Ubuntu also available via ```sudo apt install python3-usb```)
 * [colour 0.1.5](https://github.com/vaab/colour)
 
-If under Windows, drop PyUSB for [pywinusb](https://github.com/rene-aguirre/pywinusb) (under development)
+If under Windows, you will need the [libusb windows binaries](https://github.com/libusb/libusb/releases). This does not fully work yet, but will soon.
 
 ### Hardware
 
